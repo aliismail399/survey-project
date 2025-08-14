@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استبيان أداء أصول التوزيع</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #0056b3;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .section {
+            margin-bottom: 20px;
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            table-layout: fixed;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: right;
+            word-wrap: break-word;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .table-checkbox input {
+            transform: scale(1.2);
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>استبيان أداء أصول التوزيع</h1>
+    <p>تهدف هذه الاستبانة إلى رصد جميع تحديات إدارة الأصول بالتوزيع، وجمع مقترحات التحسين، والتأكد من شمول الخطط المعتمدة لتحسين جميع التحديات الميدانية.</p>
+
+    <form id="surveyForm" action="https://formspree.io/f/xpwlnpdb" method="POST">
+
+    <div id="section-basic-info" class="section" style="display: block;">
+        <h2>القسم 1: معلومات أساسية</h2>
+        <div class="form-group">
+            <label for="name">الاسم: (اختياري)</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="employeeId">الرقم الوظيفي: (اختياري)</label>
+            <input type="text" id="employeeId" name="employee_id">
+        </div>
+        <div class="form-group">
+            <label for="jobGrade">الدرجة الوظيفية:</label>
+            <select id="jobGrade" name="job_grade">
+                <option value="">اختر خيارًا واحدًا</option>
+                <option value="47">47 فأقل</option>
+                <option value="48-52">48-52</option>
+                <option value="53-54">53-54</option>
+                <option value="55">55 أو أعلى</option>
+                <option value="N/A">لا ينطبق</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jobRole">علاقتك الوظيفية بإدارة أصول التوزيع:</label>
+            <select id="jobRole" name="job_role" onchange="showRelevantSections()">
+                <option value="">اختر خيارًا واحدًا</option>
+                <option value="operations">عمليات</option>
+                <option value="inspection">فحص وصيانة</option>
+                <option value="planning">تخطيط وإنشاءات</option>
+                <option value="systems">أنظمة وبيانات</option>
+                <option value="auditing">تدقيق وجودة</option>
+                <option value="performance">متابعة الأداء ومراقبة مؤشرات</option>
+                <option value="other">أخرى (يرجى التحديد)</option>
+            </select>
+            <input type="text" id="otherRole" name="other_job_role" placeholder="يرجى التحديد" style="display: none; margin-top: 10px;">
+        </div>
+    </div>
+
+    <div id="section-2" class="section">
+        <h2>القسم 2: أعمال فحص المعدات والشبكات</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>مناسبة أجهزة الفحص والقياس وكفاءتها</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-1-rating" value="متدني"></td>
+                        <td><textarea name="item2-1-challenges"></textarea></td>
+                        <td><textarea name="item2-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح وسهولة أدلة وإجراءات فحص المعدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-2-rating" value="متدني"></td>
+                        <td><textarea name="item2-2-challenges"></textarea></td>
+                        <td><textarea name="item2-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>مستوى أنظمة الرصد لأداء المعدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-3-rating" value="متدني"></td>
+                        <td><textarea name="item2-3-challenges"></textarea></td>
+                        <td><textarea name="item2-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>استجابة خطط الفحص لأداء الشبكات والأعطال الطارئة</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-4-rating" value="متدني"></td>
+                        <td><textarea name="item2-4-challenges"></textarea></td>
+                        <td><textarea name="item2-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>مستوى تمكن مختصي الفحص</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-5-rating" value="متدني"></td>
+                        <td><textarea name="item2-5-challenges"></textarea></td>
+                        <td><textarea name="item2-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>البرامج التدريبية لأعمال فحص المعدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-6-rating" value="متدني"></td>
+                        <td><textarea name="item2-6-challenges"></textarea></td>
+                        <td><textarea name="item2-6-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة توثيق نتائج أعمال الفحص</td>
+                        <td class="table-checkbox"><input type="radio" name="item2-7-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-7-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item2-7-rating" value="متدني"></td>
+                        <td><textarea name="item2-7-challenges"></textarea></td>
+                        <td><textarea name="item2-7-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="section-3" class="section">
+        <h2>القسم 3: أعمال صيانة الشبكات والمعدات</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>وضوح البرامج اليومية والأسبوعية لأعمال الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-1-rating" value="متدني"></td>
+                        <td><textarea name="item3-1-challenges"></textarea></td>
+                        <td><textarea name="item3-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>مستوى التجهيز والتحضير لأعمال الصيانة (تصاريح -مواد -فرق-معدات)</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-2-rating" value="متدني"></td>
+                        <td><textarea name="item3-2-challenges"></textarea></td>
+                        <td><textarea name="item3-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة تنفيذ أعمال الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-3-rating" value="متدني"></td>
+                        <td><textarea name="item3-3-challenges"></textarea></td>
+                        <td><textarea name="item3-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية دور الاستشاري في الإشراف</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-4-rating" value="متدني"></td>
+                        <td><textarea name="item3-4-challenges"></textarea></td>
+                        <td><textarea name="item3-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توفر المواد وقطع الغيار وأدوات العمل</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-5-rating" value="متدني"></td>
+                        <td><textarea name="item3-5-challenges"></textarea></td>
+                        <td><textarea name="item3-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح أدلة وإجراءات الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-6-rating" value="متدني"></td>
+                        <td><textarea name="item3-6-challenges"></textarea></td>
+                        <td><textarea name="item3-6-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>البرامج التدريبية لأعمال الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-7-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-7-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-7-rating" value="متدني"></td>
+                        <td><textarea name="item3-7-challenges"></textarea></td>
+                        <td><textarea name="item3-7-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>استجابة مقاولي العقد الموحد وجاهزيتهم</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-8-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-8-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-8-rating" value="متدني"></td>
+                        <td><textarea name="item3-8-challenges"></textarea></td>
+                        <td><textarea name="item3-8-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تطبيق اختبارات أداء المعدات قبل إعادة تشغيل المعدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-9-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-9-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-9-rating" value="متدني"></td>
+                        <td><textarea name="item3-9-challenges"></textarea></td>
+                        <td><textarea name="item3-9-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية الإشراف على أعمال الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-10-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-10-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-10-rating" value="متدني"></td>
+                        <td><textarea name="item3-10-challenges"></textarea></td>
+                        <td><textarea name="item3-10-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة توثيق أعمال الصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-11-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-11-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-11-rating" value="متدني"></td>
+                        <td><textarea name="item3-11-challenges"></textarea></td>
+                        <td><textarea name="item3-11-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>سهولة وسرعة إشعار المشتركين بالفصولات المبرمجة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-12-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-12-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-12-rating" value="متدني"></td>
+                        <td><textarea name="item3-12-challenges"></textarea></td>
+                        <td><textarea name="item3-12-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>كفاءة عقود صيانة معدات الفحص والصيانة والمولدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-13-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-13-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-13-rating" value="متدني"></td>
+                        <td><textarea name="item3-13-challenges"></textarea></td>
+                        <td><textarea name="item3-13-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>آلية تقييم عمالة المقاولين ضمن فرق الفحص والصيانة</td>
+                        <td class="table-checkbox"><input type="radio" name="item3-14-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-14-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item3-14-rating" value="متدني"></td>
+                        <td><textarea name="item3-14-challenges"></textarea></td>
+                        <td><textarea name="item3-14-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="section-4" class="section">
+        <h2>القسم 4: جودة أعمال تشغيل الشبكة والمعدات</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>وضوح تخطيط أعمال التشغيل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-1-rating" value="متدني"></td>
+                        <td><textarea name="item4-1-challenges"></textarea></td>
+                        <td><textarea name="item4-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>آلية أسناد مهام التشغيل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-2-rating" value="متدني"></td>
+                        <td><textarea name="item4-2-challenges"></textarea></td>
+                        <td><textarea name="item4-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>قنوات الاتصال مع التحكم</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-3-rating" value="متدني"></td>
+                        <td><textarea name="item4-3-challenges"></textarea></td>
+                        <td><textarea name="item4-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>مخططات التشغيل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-4-rating" value="متدني"></td>
+                        <td><textarea name="item4-4-challenges"></textarea></td>
+                        <td><textarea name="item4-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>آلية توثيق الأعمال التشغيلية</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-5-rating" value="متدني"></td>
+                        <td><textarea name="item4-5-challenges"></textarea></td>
+                        <td><textarea name="item4-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تصاريح العمل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-6-rating" value="متدني"></td>
+                        <td><textarea name="item4-6-challenges"></textarea></td>
+                        <td><textarea name="item4-6-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة متابعة المشغلين تنفيذ الأعمال ضمن التصاريح المصدرة</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-7-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-7-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-7-rating" value="متدني"></td>
+                        <td><textarea name="item4-7-challenges"></textarea></td>
+                        <td><textarea name="item4-7-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة أدلة وإجراءات التشغيل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-8-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-8-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-8-rating" value="متدني"></td>
+                        <td><textarea name="item4-8-challenges"></textarea></td>
+                        <td><textarea name="item4-8-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تطبيق خطط وإجراءات السلامة</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-9-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-9-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-9-rating" value="متدني"></td>
+                        <td><textarea name="item4-9-challenges"></textarea></td>
+                        <td><textarea name="item4-9-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>كفاءة وفاعلية معدات الفصل والتوصيل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-10-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-10-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-10-rating" value="متدني"></td>
+                        <td><textarea name="item4-10-challenges"></textarea></td>
+                        <td><textarea name="item4-10-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>كفاءة أنظمة ومعدات الأتمتة</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-11-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-11-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-11-rating" value="متدني"></td>
+                        <td><textarea name="item4-11-challenges"></textarea></td>
+                        <td><textarea name="item4-11-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح حدود التشغيل والصيانة مع المشتركين وشركة النقل</td>
+                        <td class="table-checkbox"><input type="radio" name="item4-12-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-12-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item4-12-rating" value="متدني"></td>
+                        <td><textarea name="item4-12-challenges"></textarea></td>
+                        <td><textarea name="item4-12-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-5" class="section">
+        <h2>القسم 5: إدارة أعطال الشبكة</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>سرعة وصول بلاغات الأعطال</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-1-rating" value="متدني"></td>
+                        <td><textarea name="item5-1-challenges"></textarea></td>
+                        <td><textarea name="item5-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>آلية إسناد المهام للمشغلين</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-2-rating" value="متدني"></td>
+                        <td><textarea name="item5-2-challenges"></textarea></td>
+                        <td><textarea name="item5-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح المخططات ومراحل التجزئة الإعادة</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-3-rating" value="متدني"></td>
+                        <td><textarea name="item5-3-challenges"></textarea></td>
+                        <td><textarea name="item5-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>متابعة التحكم لإجراءات الإعادة وسرعة التواصل والتوجيه</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-4-rating" value="متدني"></td>
+                        <td><textarea name="item5-4-challenges"></textarea></td>
+                        <td><textarea name="item5-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تقنيات الفحص وتحديد الأعطال</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-5-rating" value="متدني"></td>
+                        <td><textarea name="item5-5-challenges"></textarea></td>
+                        <td><textarea name="item5-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>سرعة توفر معدات التوصيل المؤقت</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-6-rating" value="متدني"></td>
+                        <td><textarea name="item5-6-challenges"></textarea></td>
+                        <td><textarea name="item5-6-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>إجراءات توثيق مراحل التجزئة والإعادة</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-7-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-7-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-7-rating" value="متدني"></td>
+                        <td><textarea name="item5-7-challenges"></textarea></td>
+                        <td><textarea name="item5-7-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية التذاكر الفردية والجماعية في تحديد الأعطال وسرعة المعالجة</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-8-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-8-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-8-rating" value="متدني"></td>
+                        <td><textarea name="item5-8-challenges"></textarea></td>
+                        <td><textarea name="item5-8-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>سهولة وسرعة إشعار المشتركين بالأعطال والإعادة</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-9-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-9-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-9-rating" value="متدني"></td>
+                        <td><textarea name="item5-9-challenges"></textarea></td>
+                        <td><textarea name="item5-9-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية تحليل الأعطال وتحديد توصيات منع تكرارها</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-10-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-10-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-10-rating" value="متدني"></td>
+                        <td><textarea name="item5-10-challenges"></textarea></td>
+                        <td><textarea name="item5-10-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح وتطبيق خطط وإجراءات السلامة</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-11-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-11-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-11-rating" value="متدني"></td>
+                        <td><textarea name="item5-11-challenges"></textarea></td>
+                        <td><textarea name="item5-11-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية آليات الإبلاغ عن الانقطاعات حسب الدليل المعتمد</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-12-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-12-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-12-rating" value="متدني"></td>
+                        <td><textarea name="item5-12-challenges"></textarea></td>
+                        <td><textarea name="item5-12-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تقارير ووثائق التحقق من الأعطال -إدارة الأزمات</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-13-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-13-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-13-rating" value="متدني"></td>
+                        <td><textarea name="item5-13-challenges"></textarea></td>
+                        <td><textarea name="item5-13-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>إجراءات إسناد أعمال الصيانة للحالات الطارئة للمقاولين واستلام الأعمال</td>
+                        <td class="table-checkbox"><input type="radio" name="item5-14-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-14-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item5-14-rating" value="متدني"></td>
+                        <td><textarea name="item5-14-challenges"></textarea></td>
+                        <td><textarea name="item5-14-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-6" class="section">
+        <h2>القسم 6: تحليل أداء الأصول</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>فاعلية معايير المغذيات الأقل أداء</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-1-rating" value="متدني"></td>
+                        <td><textarea name="item6-1-challenges"></textarea></td>
+                        <td><textarea name="item6-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة تحليل أعطال المعدات وتحديد توصيات منع تكرارها</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-2-rating" value="متدني"></td>
+                        <td><textarea name="item6-2-challenges"></textarea></td>
+                        <td><textarea name="item6-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>آلية التعامل مع المعدات المتكرر الانقطاع عليها</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-3-rating" value="متدني"></td>
+                        <td><textarea name="item6-3-challenges"></textarea></td>
+                        <td><textarea name="item6-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية أنظمة رصد أداء المعدات في تفادي حدوث الأعطال</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-4-rating" value="متدني"></td>
+                        <td><textarea name="item6-4-challenges"></textarea></td>
+                        <td><textarea name="item6-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية إجراءات استلام الأصول في تحسين أداء المعدات</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-5-rating" value="متدني"></td>
+                        <td><textarea name="item6-5-challenges"></textarea></td>
+                        <td><textarea name="item6-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>وضوح مؤشرات قياس أداء الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item6-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item6-6-rating" value="متدني"></td>
+                        <td><textarea name="item6-6-challenges"></textarea></td>
+                        <td><textarea name="item6-6-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-7" class="section">
+        <h2>القسم 7: مقاييس وبرامج الأصول</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>فاعلية معايير تحويل الشبكات الهوائية لأرضية</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-1-rating" value="متدني"></td>
+                        <td><textarea name="item7-1-challenges"></textarea></td>
+                        <td><textarea name="item7-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>خطط استبدال الأصول بمواصفات غير قياسية</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-2-rating" value="متدني"></td>
+                        <td><textarea name="item7-2-challenges"></textarea></td>
+                        <td><textarea name="item7-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>خطط استبدال الأعمدة الخشبية</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-3-rating" value="متدني"></td>
+                        <td><textarea name="item7-3-challenges"></textarea></td>
+                        <td><textarea name="item7-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تقارير بيان قدرات شبكات التوزيع</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-4-rating" value="متدني"></td>
+                        <td><textarea name="item7-4-challenges"></textarea></td>
+                        <td><textarea name="item7-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توثيق أعمال الإحلال عبر الحسابات والأنظمة</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-5-rating" value="متدني"></td>
+                        <td><textarea name="item7-5-challenges"></textarea></td>
+                        <td><textarea name="item7-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تسجيل جميع بيانات الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-6-rating" value="متدني"></td>
+                        <td><textarea name="item7-6-challenges"></textarea></td>
+                        <td><textarea name="item7-6-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>كفاءة أدلة وإجراءات خطط إحلال الشبكات</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-7-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-7-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-7-rating" value="متدني"></td>
+                        <td><textarea name="item7-7-challenges"></textarea></td>
+                        <td><textarea name="item7-7-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تناسب خطط التعزيز والإحلال مع احتياج الشبكة وتحسين موثوقيتها</td>
+                        <td class="table-checkbox"><input type="radio" name="item7-8-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-8-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item7-8-rating" value="متدني"></td>
+                        <td><textarea name="item7-8-challenges"></textarea></td>
+                        <td><textarea name="item7-8-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-8" class="section">
+        <h2>القسم 8: معلومات وأنظمة الأصول</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ترابط أنظمة بيانات الأصول وسهولة عكس البيانات</td>
+                        <td class="table-checkbox"><input type="radio" name="item8-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-1-rating" value="متدني"></td>
+                        <td><textarea name="item8-1-challenges"></textarea></td>
+                        <td><textarea name="item8-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة تسجيل بيانات الأصول في الأنظمة</td>
+                        <td class="table-checkbox"><input type="radio" name="item8-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-2-rating" value="متدني"></td>
+                        <td><textarea name="item8-2-challenges"></textarea></td>
+                        <td><textarea name="item8-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>الاستفادة من برامج المسح والفحص في تحديث بيانات الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item8-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-3-rating" value="متدني"></td>
+                        <td><textarea name="item8-3-challenges"></textarea></td>
+                        <td><textarea name="item8-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة بيانات مصادر التغذية</td>
+                        <td class="table-checkbox"><input type="radio" name="item8-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item8-4-rating" value="متدني"></td>
+                        <td><textarea name="item8-4-challenges"></textarea></td>
+                        <td><textarea name="item8-4-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-9" class="section">
+        <h2>القسم 9: جودة أداء الأصول</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>وضوح إجراءات جودة الأعمال على الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item9-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-1-rating" value="متدني"></td>
+                        <td><textarea name="item9-1-challenges"></textarea></td>
+                        <td><textarea name="item9-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>فاعلية زيارات قياس جودة أداء الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item9-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-2-rating" value="متدني"></td>
+                        <td><textarea name="item9-2-challenges"></textarea></td>
+                        <td><textarea name="item9-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة تقارير قياس جودة الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item9-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-3-rating" value="متدني"></td>
+                        <td><textarea name="item9-3-challenges"></textarea></td>
+                        <td><textarea name="item9-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>دور الاستشاريين في مراقبة جودة أداء الأصول</td>
+                        <td class="table-checkbox"><input type="radio" name="item9-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-4-rating" value="متدني"></td>
+                        <td><textarea name="item9-4-challenges"></textarea></td>
+                        <td><textarea name="item9-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توثيق تقارير جودة أداء الأصول ومتابعة توصيات التحسين</td>
+                        <td class="table-checkbox"><input type="radio" name="item9-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item9-5-rating" value="متدني"></td>
+                        <td><textarea name="item9-5-challenges"></textarea></td>
+                        <td><textarea name="item9-5-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-10" class="section">
+        <h2>القسم 10: مؤشرات موثوقية الشبكات</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>كفاءة أنظمة توثيق الانقطاعات</td>
+                        <td class="table-checkbox"><input type="radio" name="item10-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-1-rating" value="متدني"></td>
+                        <td><textarea name="item10-1-challenges"></textarea></td>
+                        <td><textarea name="item10-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>كفاءة تقارير مؤشرات الموثوقية</td>
+                        <td class="table-checkbox"><input type="radio" name="item10-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-2-rating" value="متدني"></td>
+                        <td><textarea name="item10-2-challenges"></textarea></td>
+                        <td><textarea name="item10-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>جودة مدخلات تقارير مؤشرات الموثوقية (عدد المشتركين - مراحل الإعادة)</td>
+                        <td class="table-checkbox"><input type="radio" name="item10-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-3-rating" value="متدني"></td>
+                        <td><textarea name="item10-3-challenges"></textarea></td>
+                        <td><textarea name="item10-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>أنظمة احتساب مؤشرات الموثوقية لشبكات الجهد المنخفض</td>
+                        <td class="table-checkbox"><input type="radio" name="item10-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-4-rating" value="متدني"></td>
+                        <td><textarea name="item10-4-challenges"></textarea></td>
+                        <td><textarea name="item10-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تقارير ووثائق التحقق من الأعطال -إدارة الأزمات</td>
+                        <td class="table-checkbox"><input type="radio" name="item10-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item10-5-rating" value="متدني"></td>
+                        <td><textarea name="item10-5-challenges"></textarea></td>
+                        <td><textarea name="item10-5-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-11" class="section">
+        <h2>القسم 11: دعم الاشتراكات الحساسة</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>نماذج التفتيش الميداني للمصادر الاحتياطية</td>
+                        <td class="table-checkbox"><input type="radio" name="item11-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-1-rating" value="متدني"></td>
+                        <td><textarea name="item11-1-challenges"></textarea></td>
+                        <td><textarea name="item11-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>تقارير زيارات المصادر الاحتياطية للمشتركين والجهات الرقابية</td>
+                        <td class="table-checkbox"><input type="radio" name="item11-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-2-rating" value="متدني"></td>
+                        <td><textarea name="item11-2-challenges"></textarea></td>
+                        <td><textarea name="item11-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>الاستجابة لحالات الأعطال للاشتراكات الحساسة</td>
+                        <td class="table-checkbox"><input type="radio" name="item11-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-3-rating" value="متدني"></td>
+                        <td><textarea name="item11-3-challenges"></textarea></td>
+                        <td><textarea name="item11-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>اكتمال بيانات الاشتراكات الحساسة</td>
+                        <td class="table-checkbox"><input type="radio" name="item11-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item11-4-rating" value="متدني"></td>
+                        <td><textarea name="item11-4-challenges"></textarea></td>
+                        <td><textarea name="item11-4-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="section-12" class="section">
+        <h2>القسم 12: بناء القدرات الفنية والمعرفية لموظفي نشاط التوزيع</h2>
+        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البند الفرعي</th>
+                        <th>مميز</th>
+                        <th>متوسط</th>
+                        <th>متدني</th>
+                        <th>تحديات (نصية)</th>
+                        <th>مقترحات (نصية)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>مستوى البرامج الفنية التدريبية</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-1-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-1-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-1-rating" value="متدني"></td>
+                        <td><textarea name="item12-1-challenges"></textarea></td>
+                        <td><textarea name="item12-1-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توافق البرامج التدريبية مع الاحتياج</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-2-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-2-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-2-rating" value="متدني"></td>
+                        <td><textarea name="item12-2-challenges"></textarea></td>
+                        <td><textarea name="item12-2-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توفر الخبرات الفنية الميدانية</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-3-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-3-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-3-rating" value="متدني"></td>
+                        <td><textarea name="item12-3-challenges"></textarea></td>
+                        <td><textarea name="item12-3-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>مستوى الاستفادة من الخبراء في بناء القدرات الفنية</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-4-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-4-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-4-rating" value="متدني"></td>
+                        <td><textarea name="item12-4-challenges"></textarea></td>
+                        <td><textarea name="item12-4-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>توفر وسائل التعلم والتدريب الذاتي</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-5-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-5-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-5-rating" value="متدني"></td>
+                        <td><textarea name="item12-5-challenges"></textarea></td>
+                        <td><textarea name="item12-5-suggestions"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>دور المجلس العلمي في رفع المستوى المعرفي والمهاري للموظفين</td>
+                        <td class="table-checkbox"><input type="radio" name="item12-6-rating" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-6-rating" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="item12-6-rating" value="متدني"></td>
+                        <td><textarea name="item12-6-challenges"></textarea></td>
+                        <td><textarea name="item12-6-suggestions"></textarea></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button type="submit" class="submit-button">إرسال الاستبيان</button>
+    </form>
+</div>
+
+<script>
+    function showRelevantSections() {
+        const jobRole = document.getElementById('jobRole').value;
+        const sections = document.querySelectorAll('.section');
+        const otherRoleInput = document.getElementById('otherRole');
+        
+        // إخفاء جميع الأقسام ما عدا القسم الأول
+        sections.forEach(section => {
+            if (section.id !== 'section-basic-info') {
+                section.style.display = 'none';
+            }
+        });
+
+        // إظهار الأقسام المناسبة بناءً على القيمة المختارة
+        if (jobRole === 'operations') {
+            showSections([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+        } else if (jobRole === 'inspection') {
+            showSections([2, 3, 5, 6, 8, 9, 10, 11, 12]);
+        } else if (jobRole === 'planning') {
+            showSections([7, 10, 11, 12]);
+        } else if (jobRole === 'systems') {
+            showSections([2, 3, 5, 8, 9, 10, 11, 12]);
+        } else if (jobRole === 'auditing') {
+            showSections([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+        } else if (jobRole === 'performance') {
+            showSections([4, 5, 6, 7, 8, 9, 10, 11, 12]);
+        } else if (jobRole === 'other') {
+             otherRoleInput.style.display = 'block';
+        } else {
+            otherRoleInput.style.display = 'none';
+        }
+    }
+
+    function showSections(sectionNumbers) {
+        sectionNumbers.forEach(num => {
+            const section = document.getElementById(`section-${num}`);
+            if (section) {
+                section.style.display = 'block';
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('section-basic-info').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
