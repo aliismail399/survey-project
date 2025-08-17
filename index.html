@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استبيان أداء أصول التوزيع</title>
+    <title>استبيان قطاع ادارة أصول التوزيع</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -97,15 +97,21 @@
 <body>
 
 <div class="container">
-    <h1>استبيان أداء أصول التوزيع</h1>
-    <p>تهدف هذه الاستبانة إلى رصد جميع تحديات إدارة الأصول بالتوزيع، وجمع مقترحات التحسين، والتأكد من شمول الخطط المعتمدة لتحسين جميع التحديات الميدانية.</p>
+    <h1>استبيان قطاع ادارة أصول التوزيع</h1>
+
+    <!-- شاشة ترحيبية -->
+    <div id="welcome-screen" style="display: block;">
+        <h2>مرحباً بكم</h2>
+        <p>يسرّ قطاع ادارة الأصول دعوتكم للمشاركة في هذا الاستبيان القصير، والذي لن يستغرق أكثر من 5 دقائق من وقتكم. تهدف مشاركتكم إلى مساعدتنا في تقييم مستوى اداء أعمال ادارة أصول التوزيع والاستفادة من مقترحاتكم التحسينية ودراسة التحديات التي تواجهكم لضمان تحسين موثوقية شبكات التوزيع وتحقيق أهداف الشركة السعودية للكهرباء ورضا عملاءنا.</p>
+        <button onclick="startSurvey()" class="submit-button">ابدأ الاستبيان</button>
+    </div>
 
     <!-- Formspree action for submission -->
-    <form id="surveyForm" action="https://formspree.io/f/xpwlnpdb" method="POST">
+    <form id="surveyForm" action="https://formspree.io/f/xpwlnpdb" method="POST" style="display: none;">
 
     <!-- القسم 1: معلومات أساسية -->
-    <div id="section-basic-info" class="section" style="display: block;">
-        <h2>القسم 1: معلومات أساسية</h2>
+    <div id="section-معلومات-أساسية" class="section">
+        <h2>معلومات أساسية</h2>
         <div class="form-group">
             <label for="name">الاسم: (اختياري)</label>
             <input type="text" id="name" name="الاسم">
@@ -129,25 +135,20 @@
             <label for="jobRole">علاقتك الوظيفية بإدارة أصول التوزيع:</label>
             <select id="jobRole" name="العلاقة_الوظيفية" onchange="showRelevantSections()">
                 <option value="">اختر خيارًا واحدًا</option>
-                <option value="operations">عمليات</option>
-                <option value="inspection">فحص وصيانة</option>
-                <option value="planning">تخطيط وإنشاءات</option>
-                <option value="systems">أنظمة وبيانات</option>
-                <option value="auditing">تدقيق وجودة</option>
-                <option value="performance">متابعة الأداء ومراقبة مؤشرات</option>
-                <option value="other">أخرى (يرجى التحديد)</option>
+                <option value="عمليات">عمليات</option>
+                <option value="فحص وصيانة">فحص وصيانة</option>
+                <option value="تخطيط وإنشاءات">تخطيط وإنشاءات</option>
+                <option value="أنظمة وبيانات">أنظمة وبيانات</option>
+                <option value="تدقيق وجودة">تدقيق وجودة</option>
+                <option value="متابعة الأداء ومراقبة مؤشرات">متابعة الأداء ومراقبة مؤشرات</option>
             </select>
-            <input type="text" id="otherRole" name="العلاقة_الوظيفية_أخرى" placeholder="يرجى التحديد" style="display: none; margin-top: 10px;">
         </div>
     </div>
-
-    <!-- الأقسام المختلفة بناءً على العلاقة الوظيفية -->
-    <!-- تم إضافة id "section-2" للقسم 2 و "section-3" للقسم 3، وهكذا... -->
     
-    <!-- القسم 2: أعمال فحص المعدات والشبكات (سؤال رقم 5) -->
-    <div id="section-2" class="section">
-        <h2>القسم 2: أعمال فحص المعدات والشبكات (سؤال رقم 5)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 2: أعمال فحص المعدات والشبكات -->
+    <div id="section-أعمال-فحص-المعدات-والشبكات" class="section">
+        <h2>أعمال فحص المعدات والشبكات</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -217,15 +218,23 @@
                         <td><textarea name="تحديات_توثيق_نتائج_الفحص"></textarea></td>
                         <td><textarea name="مقترحات_توثيق_نتائج_الفحص"></textarea></td>
                     </tr>
+                    <tr>
+                        <td>مستوى فحص أصول محطات التوزيع الفرعية ٦٩-٣٣ /١٣.٨-١١٠ ك ف</td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_فحص_محطات_التوزيع" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_فحص_محطات_التوزيع" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_فحص_محطات_التوزيع" value="متدني"></td>
+                        <td><textarea name="تحديات_فحص_محطات_التوزيع"></textarea></td>
+                        <td><textarea name="مقترحات_فحص_محطات_التوزيع"></textarea></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- القسم 3: أعمال صيانة الشبكات والمعدات (سؤال رقم 6) -->
-    <div id="section-3" class="section">
-        <h2>القسم 3: أعمال صيانة الشبكات والمعدات (سؤال رقم 6)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 3: أعمال صيانة الشبكات والمعدات -->
+    <div id="section-أعمال-صيانة-الشبكات-والمعدات" class="section">
+        <h2>أعمال صيانة الشبكات والمعدات</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -351,15 +360,23 @@
                         <td><textarea name="تحديات_تقييم_المقاولين"></textarea></td>
                         <td><textarea name="مقترحات_تقييم_المقاولين"></textarea></td>
                     </tr>
+                    <tr>
+                        <td>مستوى صيانة أصول محطات التوزيع الفرعية ٦٩-٣٣ /١٣.٨-١١٠ ك ف</td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_صيانة_محطات_التوزيع_الفرعية" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_صيانة_محطات_التوزيع_الفرعية" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_صيانة_محطات_التوزيع_الفرعية" value="متدني"></td>
+                        <td><textarea name="تحديات_صيانة_محطات_التوزيع_الفرعية"></textarea></td>
+                        <td><textarea name="مقترحات_صيانة_محطات_التوزيع_الفرعية"></textarea></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     
-    <!-- القسم 4: جودة أعمال تشغيل الشبكة والمعدات (سؤال رقم 7) -->
-    <div id="section-4" class="section">
-        <h2>القسم 4: جودة أعمال تشغيل الشبكة والمعدات (سؤال رقم 7)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 4: جودة أعمال تشغيل الشبكة والمعدات -->
+    <div id="section-جودة-أعمال-تشغيل-الشبكة-والمعدات" class="section">
+        <h2>جودة أعمال تشغيل الشبكة والمعدات</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -422,7 +439,7 @@
                         <td><textarea name="مقترحات_تصاريح_العمل"></textarea></td>
                     </tr>
                     <tr>
-                        <td>جودة متابعة المشغلين تنفيذ الأعمال ضمن التصاريح المصدرة</td>
+                        <td>جودة متابعة المشغلين لتنفيذ الأعمال ضمن التصاريح المصدرة</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_متابعة_المشغلين" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_متابعة_المشغلين" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_متابعة_المشغلين" value="متدني"></td>
@@ -469,15 +486,23 @@
                         <td><textarea name="تحديات_حدود_التشغيل"></textarea></td>
                         <td><textarea name="مقترحات_حدود_التشغيل"></textarea></td>
                     </tr>
+                    <tr>
+                        <td>مستوى تشغيل اصول محطات التوزيع الفرعية ٦٩-٣٣ /١٣.٨-١١٠ ك ف</td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_تشغيل_محطات_التوزيع_الفرعية" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_تشغيل_محطات_التوزيع_الفرعية" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_تشغيل_محطات_التوزيع_الفرعية" value="متدني"></td>
+                        <td><textarea name="تحديات_تشغيل_محطات_التوزيع_الفرعية"></textarea></td>
+                        <td><textarea name="مقترحات_تشغيل_محطات_التوزيع_الفرعية"></textarea></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
     
-    <!-- القسم 5: إدارة أعطال الشبكة (سؤال رقم 8) -->
-    <div id="section-5" class="section">
-        <h2>القسم 5: إدارة أعطال الشبكة (سؤال رقم 8)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 5: إدارة أعطال الشبكة -->
+    <div id="section-إدارة-أعطال-الشبكة" class="section">
+        <h2>إدارة أعطال الشبكة</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -508,7 +533,7 @@
                         <td><textarea name="مقترحات_اسناد_المهام"></textarea></td>
                     </tr>
                     <tr>
-                        <td>وضوح المخططات ومراحل التجزئة الإعادة</td>
+                        <td>وضوح المخططات ومراحل التجزئة والاعادة</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_المخططات" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_المخططات" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_المخططات" value="متدني"></td>
@@ -532,7 +557,7 @@
                         <td><textarea name="مقترحات_تقنيات_الفحص"></textarea></td>
                     </tr>
                     <tr>
-                        <td>سرعة توفر معدات التوصيل المؤقت</td>
+                        <td>سرعة توفير معدات التوصيل المؤقت</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_سرعة_توفر_المعدات" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_سرعة_توفر_المعدات" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_سرعة_توفر_المعدات" value="متدني"></td>
@@ -608,10 +633,10 @@
         </div>
     </div>
     
-    <!-- القسم 6: تحليل أداء الأصول (سؤال رقم 9) -->
-    <div id="section-6" class="section">
-        <h2>القسم 6: تحليل أداء الأصول (سؤال رقم 9)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 6: تحليل أداء الأصول -->
+    <div id="section-تحليل-أداء-الأصول" class="section">
+        <h2>تحليل أداء الأصول</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -678,10 +703,10 @@
         </div>
     </div>
     
-    <!-- القسم 7: مقاييس وبرامج الأصول (سؤال رقم 10) -->
-    <div id="section-7" class="section">
-        <h2>القسم 7: مقاييس وبرامج الأصول (سؤال رقم 10)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 7: مقاييس وبرامج الأصول -->
+    <div id="section-مقاييس-وبرامج-الأصول" class="section">
+        <h2>مقاييس وبرامج الأصول</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -764,10 +789,10 @@
         </div>
     </div>
     
-    <!-- القسم 8: معلومات وأنظمة الأصول (سؤال رقم 11) -->
-    <div id="section-8" class="section">
-        <h2>القسم 8: معلومات وأنظمة الأصول (سؤال رقم 11)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 8: معلومات وأنظمة الأصول -->
+    <div id="section-معلومات-وأنظمة-الأصول" class="section">
+        <h2>معلومات وأنظمة الأصول</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -818,10 +843,10 @@
         </div>
     </div>
     
-    <!-- القسم 9: جودة أداء الأصول (سؤال رقم 12) -->
-    <div id="section-9" class="section">
-        <h2>القسم 9: جودة أداء الأصول (سؤال رقم 12)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 9: جودة أداء الأصول -->
+    <div id="section-جودة-أداء-الأصول" class="section">
+        <h2>جودة أداء الأصول</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -880,10 +905,10 @@
         </div>
     </div>
     
-    <!-- القسم 10: مؤشرات موثوقية الشبكات (سؤال رقم 13) -->
-    <div id="section-10" class="section">
-        <h2>القسم 10: مؤشرات موثوقية الشبكات (سؤال رقم 13)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 10: مؤشرات موثوقية الشبكات -->
+    <div id="section-مؤشرات-موثوقية-الشبكات" class="section">
+        <h2>مؤشرات موثوقية الشبكات</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -942,10 +967,10 @@
         </div>
     </div>
     
-    <!-- القسم 11: دعم الاشتراكات الحساسة (سؤال رقم 14) -->
-    <div id="section-11" class="section">
-        <h2>القسم 11: دعم الاشتراكات الحساسة (سؤال رقم 14)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 11: دعم الاشتراكات الحساسة -->
+    <div id="section-دعم-الاشتراكات-الحساسة" class="section">
+        <h2>دعم الاشتراكات الحساسة</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -996,10 +1021,10 @@
         </div>
     </div>
     
-    <!-- القسم 12: بناء القدرات الفنية والمعرفية (سؤال رقم 15) -->
-    <div id="section-12" class="section">
-        <h2>القسم 12: بناء القدرات الفنية والمعرفية لموظفي نشاط التوزيع (سؤال رقم 15)</h2>
-        <p>تعليمات للمشاركين: يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند. في الأسئلة النصية التالية، يرجى ذكر التحديات والمقترحات مع الإشارة إلى البند المحدد إن أمكن.</p>
+    <!-- القسم 12: بناء القدرات الفنية والمعرفية -->
+    <div id="section-بناء-القدرات-الفنية-والمعرفية" class="section">
+        <h2>بناء القدرات الفنية والمعرفية لموظفي نشاط التوزيع</h2>
+        <p>يرجى اختيار مستوى التقييم (مميز، متوسط، متدني) لكل بند فرعي في الأسئلة التالية، يرجى ذكر التحديات والمقترحات في الخانات المحددة امام كل بند.</p>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -1074,55 +1099,50 @@
 <script>
     function showRelevantSections() {
         const jobRole = document.getElementById('jobRole').value;
-        const otherRoleInput = document.getElementById('otherRole');
         const allSections = document.querySelectorAll('.section');
         
         // إخفاء جميع الأقسام ما عدا القسم الأول
         allSections.forEach(section => {
-            if (section.id !== 'section-basic-info') {
+            if (section.id !== 'section-معلومات-أساسية') {
                 section.style.display = 'none';
             }
         });
 
-        otherRoleInput.style.display = 'none';
-
         // إظهار الأقسام المناسبة بناءً على القيمة المختارة
-        if (jobRole === 'operations') {
-            // (الأسئلة 5, 6, 7, 8, 9, 11, 12, 13, 14, 15)
-            showSections([2, 3, 4, 5, 6, 8, 9, 10, 11, 12]);
-        } else if (jobRole === 'inspection') {
-            // (الأسئلة 5, 6, 8, 9, 11, 12, 13, 14, 15)
-            showSections([2, 3, 5, 6, 8, 9, 10, 11, 12]);
-        } else if (jobRole === 'planning') {
-            // (الأسئلة 10, 11, 15)
-            showSections([7, 8, 12]);
-        } else if (jobRole === 'systems') {
-            // (الأسئلة 5, 6, 9, 11, 12, 13, 14, 15)
-            showSections([2, 3, 6, 8, 9, 10, 11, 12]);
-        } else if (jobRole === 'auditing') {
-            // (الأسئلة 5, 6, 7, 8, 9, 11, 12, 13, 14, 15)
-            showSections([2, 3, 4, 5, 6, 8, 9, 10, 11, 12]);
-        } else if (jobRole === 'performance') {
-            // (الأسئلة 7, 8, 9, 11, 12, 13, 14, 15)
-            showSections([4, 5, 6, 8, 9, 10, 11, 12]);
-        } else if (jobRole === 'other') {
-             otherRoleInput.style.display = 'block';
+        if (jobRole === 'عمليات') {
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+        } else if (jobRole === 'فحص وصيانة') {
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+        } else if (jobRole === 'تخطيط وإنشاءات') {
+            showSections(['section-مقاييس-وبرامج-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-بناء-القدرات-الفنية-والمعرفية']);
+        } else if (jobRole === 'أنظمة وبيانات') {
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+        } else if (jobRole === 'تدقيق وجودة') {
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+        } else if (jobRole === 'متابعة الأداء ومراقبة مؤشرات') {
+            showSections(['section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
         }
     }
 
     // A helper function to show sections based on their IDs
-    function showSections(sectionNumbers) {
-        sectionNumbers.forEach(num => {
-            const section = document.getElementById(`section-${num}`);
+    function showSections(sectionIds) {
+        sectionIds.forEach(id => {
+            const section = document.getElementById(id);
             if (section) {
                 section.style.display = 'block';
             }
         });
     }
+    
+    function startSurvey() {
+        document.getElementById('welcome-screen').style.display = 'none';
+        document.getElementById('surveyForm').style.display = 'block';
+        document.getElementById('section-معلومات-أساسية').style.display = 'block';
+    }
 
     // Initially show the basic info section
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('section-basic-info').style.display = 'block';
+        document.getElementById('welcome-screen').style.display = 'block';
     });
 </script>
 
