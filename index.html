@@ -222,7 +222,7 @@
                         <td>جودة توثيق نتائج أعمال الفحص</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الفحص" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الفحص" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الفحص" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_Fحص" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الفحص" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_توثيق_نتائج_الفحص"></textarea></td>
                         <td><textarea name="مقترحات_توثيق_نتائج_الفحص"></textarea></td>
@@ -1192,7 +1192,7 @@
     </div>
     
     <!-- القسم الأخير: تعليقات -->
-    <div id="section-تعليقات-عامة" class="section" style="display: block;">
+    <div id="section-تعليقات-عامة" class="section">
         <h2>نسعد بإضافة مرئياتكم لتحسين خدمات قطاع ادارة الأصول</h2>
         <div class="form-group">
             <textarea id="comments" name="التعليقات" rows="5" placeholder="اكتب تعليقاتك هنا..."></textarea>
@@ -1209,26 +1209,27 @@
         const jobRole = document.getElementById('jobRole').value;
         const allSections = document.querySelectorAll('.section');
         
-        // إخفاء جميع الأقسام ما عدا القسم الأول
+        // إخفاء جميع الأقسام
         allSections.forEach(section => {
-            if (section.id !== 'section-معلومات-أساسية' && section.id !== 'section-تعليقات-عامة') {
-                section.style.display = 'none';
-            }
+            section.style.display = 'none';
         });
 
-        // إظهار الأقسام المناسبة بناءً على القيمة المختارة
+        // إظهار القسم الأول دائمًا
+        document.getElementById('section-معلومات-أساسية').style.display = 'block';
+
+        // إظهار الأقسام المناسبة بناءً على القيمة المختارة، بما في ذلك قسم التعليقات
         if (jobRole === 'عمليات') {
-            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         } else if (jobRole === 'فحص وصيانة') {
-            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         } else if (jobRole === 'تخطيط وإنشاءات') {
-            showSections(['section-مقاييس-وبرامج-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-مقاييس-وبرامج-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         } else if (jobRole === 'أنظمة وبيانات') {
-            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         } else if (jobRole === 'تدقيق وجودة') {
-            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-أعمال-فحص-المعدات-والشبكات', 'section-أعمال-صيانة-الشبكات-والمعدات', 'section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         } else if (jobRole === 'متابعة الأداء ومراقبة مؤشرات') {
-            showSections(['section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية']);
+            showSections(['section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         }
     }
 
@@ -1246,9 +1247,7 @@
         document.getElementById('welcome-screen').style.display = 'none';
         document.getElementById('surveyForm').style.display = 'block';
         document.getElementById('section-معلومات-أساسية').style.display = 'block';
-        
-        // Show the comments section by default
-        document.getElementById('section-تعليقات-عامة').style.display = 'block';
+        // لا يتم إظهار قسم التعليقات هنا، بل يتم ذلك من خلال دالة showRelevantSections
     }
 
     // Initially show the welcome screen
