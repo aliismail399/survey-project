@@ -123,7 +123,7 @@
         </div>
         <div class="form-group">
             <label for="jobGrade">الدرجة الوظيفية:</label>
-            <select id="jobGrade" name="الدرجة_الوظيفية">
+            <select id="jobGrade" name="الدرجة_الوظيفية" required>
                 <option value="">اختر خيارًا واحدًا</option>
                 <option value="47">47 فأقل</option>
                 <option value="48-52">48-52</option>
@@ -134,7 +134,7 @@
         </div>
         <div class="form-group">
             <label for="jobRole">علاقتك الوظيفية بإدارة أصول التوزيع:</label>
-            <select id="jobRole" name="العلاقة_الوظيفية" onchange="showRelevantSections()">
+            <select id="jobRole" name="العلاقة_الوظيفية" onchange="showRelevantSections()" required>
                 <option value="">اختر خيارًا واحدًا</option>
                 <option value="عمليات">عمليات</option>
                 <option value="فحص وصيانة">فحص وصيانة</option>
@@ -718,7 +718,7 @@
                     <tr>
                         <td>جودة تحليل أعطال المعدات وتحديد توصيات منع تكرارها</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تحليل_أعطال_المعدات" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تحليل_أعطال_المعدات" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تحليل_أعطال_المعدات" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تحليل_أعطال_المعدات" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تحليل_أعطال_المعدات" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_تحليل_أعطال_المعدات"></textarea></td>
@@ -889,12 +889,12 @@
                     </tr>
                     <tr>
                         <td>جودة تسجيل بيانات الأصول في الأنظمة</td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تسجيل_البيانات" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تسجيل_البيانات" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تسجيل_البيانات" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تسجيل_البيانات" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_جودة_تسجيل_البيانات"></textarea></td>
-                        <td><textarea name="مقترحات_جودة_تسجيل_البيانات"></textarea></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تسجيل_البيانات" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تسجيل_البيانات" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تسجيل_البيانات" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تسجيل_البيانات" value="محايد/لا ينطبق"></td>
+                        <td><textarea name="تحديات_jودة_تسجيل_البيانات"></textarea></td>
+                        <td><textarea name="مقترحات_jودة_تسجيل_البيانات"></textarea></td>
                     </tr>
                     <tr>
                         <td>الاستفادة من برامج المسح والفحص في تحديث بيانات الأصول</td>
@@ -907,10 +907,10 @@
                     </tr>
                     <tr>
                         <td>جودة بيانات مصادر التغذية</td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_بيانات_مصادر_التغذية" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_بيانات_مصادر_التغذية" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_بيانات_مصادر_التغذية" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_بيانات_مصادر_التغذية" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_بيانات_مصادر_التغذية"></textarea></td>
                         <td><textarea name="مقترحات_بيانات_مصادر_التغذية"></textarea></td>
                     </tr>
@@ -957,10 +957,10 @@
                     </tr>
                     <tr>
                         <td>جودة تقارير قياس جودة الأصول</td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تقارير_الأصول" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تقارير_الأصول" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تقارير_الأصول" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تقارير_الأصول" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تقارير_الأصول" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تقارير_الأصول" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تقارير_الأصول" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تقارير_الأصول" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_تقارير_الجودة"></textarea></td>
                         <td><textarea name="مقترحات_تقارير_الجودة"></textarea></td>
                     </tr>
@@ -1010,7 +1010,7 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_توثيق_الانقطاعات" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_انظمة_توثيق_الانقطاعات"></textarea></td>
                         <td><textarea name="مقترحات_انظمة_توثيق_الانقطاعات"></textarea></td>
                     </tr>
@@ -1025,10 +1025,10 @@
                     </tr>
                     <tr>
                         <td>جودة مدخلات تقارير مؤشرات الموثوقية (عدد المشتركين - مراحل الإعادة)</td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_مدخلات_تقارير_الموثوقية" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_مدخلات_تقارير_الموثوقية" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_مدخلات_تقارير_الموثوقية" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_مدخلات_تقارير_الموثوقية" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_مدخلات_تقارير_الموثوقية" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_مدخلات_تقارير_الموثوقية" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_مدخلات_تقارير_الموثوقية" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_مدخلات_تقارير_الموثوقية" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_مدخلات_تقارير_الموثوقية"></textarea></td>
                         <td><textarea name="مقترحات_مدخلات_تقارير_الموثوقية"></textarea></td>
                     </tr>
@@ -1036,10 +1036,10 @@
                         <td>أنظمة احتساب مؤشرات الموثوقية لشبكات الجهد المنخفض</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_احتساب_الموثوقية" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_احتساب_الموثوقية" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_احتساب_الموثوقية" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_anظمة_احتساب_الموثوقية" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_احتساب_الموثوقية" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_انظمة_احتساب_الموثوقية"></textarea></td>
-                        <td><textarea name="مقترحات_انظمة_احتساب_الموثوقية"></textarea></td>
+                        <td><textarea name="تحديات_anظمة_احتساب_الموثوقية"></textarea></td>
+                        <td><textarea name="مقترحات_anظمة_احتساب_الموثوقية"></textarea></td>
                     </tr>
                     <tr>
                         <td>تقارير ووثائق التحقق من الأعطال -إدارة الأزمات</td>
@@ -1190,7 +1190,7 @@
             </table>
         </div>
     </div>
-    
+
     <!-- القسم الأخير: تعليقات -->
     <div id="section-تعليقات-عامة" class="section">
         <h2>نسعد بإضافة مرئياتكم لتحسين خدمات قطاع ادارة الأصول</h2>
