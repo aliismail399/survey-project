@@ -98,6 +98,15 @@
             color: red;
             font-weight: normal;
         }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .error-field {
+            border: 2px solid red !important;
+        }
     </style>
 </head>
 <body>
@@ -109,11 +118,12 @@
     <div id="welcome-screen" style="display: block;">
         <h2>مرحباً بكم</h2>
         <p>يسرّ قطاع ادارة الأصول دعوتكم للمشاركة في هذا الاستبيان القصير، والذي لن يستغرق أكثر من 5 دقائق من وقتكم. تهدف مشاركتكم إلى مساعدتنا في تقييم مستوى اداء أعمال ادارة أصول التوزيع والاستفادة من مقترحاتكم التحسينية ودراسة التحديات التي تواجهكم لضمان تحسين موثوقية شبكات التوزيع وتحقيق أهداف الشركة السعودية للكهرباء ورضا عملاءنا.</p>
+        <p style="font-size: 14px; font-weight: bold; color: #d9534f;">ملاحظة: لاستعراض أفضل من خلال أجهزة الهواتف الذكية يفضل قراءة الاستبيان بالاتجاة العرضي -الأفقي -لشاشة الجوال</p>
         <button onclick="startSurvey()" class="submit-button">ابدأ الاستبيان</button>
     </div>
 
     <!-- Formspree action for submission -->
-    <form id="surveyForm" action="https://formspree.io/f/xpwlnpdb" method="POST" style="display: none;">
+    <form id="surveyForm" action="https://formspree.io/f/xpwlnpdb" method="POST" style="display: none;" onsubmit="return validateForm()">
 
     <!-- القسم 1: معلومات أساسية -->
     <div id="section-معلومات-أساسية" class="section">
@@ -182,7 +192,7 @@
                         <td>وضوح وسهولة أدلة وإجراءات فحص المعدات</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_فحص_المعدات" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_فحص_المعدات" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_فحص_المعدات" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_adلة_فحص_المعدات" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_فحص_المعدات" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_وضوح_ادلة_الفحص"></textarea></td>
                         <td><textarea name="مقترحات_وضوح_ادلة_الفحص"></textarea></td>
@@ -194,7 +204,7 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_الرصد_لاداء_المعدات" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_الرصد_لاداء_المعدات" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_انظمة_الرصد"></textarea></td>
-                        <td><textarea name="مقترحات_انظمة_الرصد"></textarea></td>
+                        <td><textarea name="مقترحات_anظمة_الرصد"></textarea></td>
                     </tr>
                     <tr>
                         <td>استجابة خطط الفحص لأداء الشبكات والأعطال الطارئة</td>
@@ -287,9 +297,9 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تنفيذ_الصيانة" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تنفيذ_الصيانة" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تنفيذ_الصيانة" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_تنفيذ_الصيانة" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_جودة_الصيانة"></textarea></td>
-                        <td><textarea name="مقترحات_جودة_الصيانة"></textarea></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_تنفيذ_الصيانة" value="محايد/لا ينطبق"></td>
+                        <td><textarea name="تحديات_jودة_الصيانة"></textarea></td>
+                        <td><textarea name="مقترحات_jودة_الصيانة"></textarea></td>
                     </tr>
                     <tr>
                         <td>فاعلية دور الاستشاري في الإشراف</td>
@@ -313,10 +323,10 @@
                         <td>وضوح أدلة وإجراءات الصيانة</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_الصيانة" value="مميز"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_الصيانة" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_الصيانة" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_adلة_الصيانة" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_وضوح_ادلة_الصيانة" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_ادلة_الصيانة"></textarea></td>
-                        <td><textarea name="مقترحات_ادلة_الصيانة"></textarea></td>
+                        <td><textarea name="تحديات_adلة_الصيانة"></textarea></td>
+                        <td><textarea name="مقترحات_adلة_الصيانة"></textarea></td>
                     </tr>
                     <tr>
                         <td>البرامج التدريبية لأعمال الصيانة</td>
@@ -357,9 +367,9 @@
                     <tr>
                         <td>جودة توثيق أعمال الصيانة</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الصيانة" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الصيانة" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_توثيق_الصيانة" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_jودة_توثيق_الصيانة" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_توثيق_الصيانة" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_توثيق_الصيانة" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_توثيق_الصيانة"></textarea></td>
                         <td><textarea name="مقترحات_توثيق_الصيانة"></textarea></td>
                     </tr>
@@ -488,9 +498,9 @@
                     <tr>
                         <td>جودة أدلة وإجراءات التشغيل</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_ادلة_التشغيل" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_ادلة_التشغيل" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_ادلة_التشغيل" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_جودة_adلة_التشغيل" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_جودة_adلة_التشغيل" value="محايد/لا ينطبق"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_jودة_ادلة_التشغيل" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_adلة_التشغيل"></textarea></td>
                         <td><textarea name="مقترحات_adلة_التشغيل"></textarea></td>
                     </tr>
@@ -515,11 +525,11 @@
                     <tr>
                         <td>كفاءة أنظمة ومعدات الأتمتة</td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_الاتمتة" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_الاتمتة" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_الاتمتة" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_الاتمتة" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_انظمة_الاتمتة"></textarea></td>
-                        <td><textarea name="مقترحات_انظمة_الاتمتة"></textarea></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_الاتمتة" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_الاتمتة" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_الاتمتة" value="محايد/لا ينطبق"></td>
+                        <td><textarea name="تحديات_anظمة_الاتمتة"></textarea></td>
+                        <td><textarea name="مقترحات_anظمة_الاتمتة"></textarea></td>
                     </tr>
                     <tr>
                         <td>وضوح حدود التشغيل والصيانة مع المشتركين وشركة النقل</td>
@@ -543,7 +553,7 @@
             </table>
         </div>
     </div>
-
+    
     <!-- القسم 5: إدارة أعطال الشبكة -->
     <div id="section-إدارة-أعطال-الشبكة" class="section">
         <h2>إدارة أعطال الشبكة</h2>
@@ -658,8 +668,8 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_تطبيق_خطط_السلامة" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_تطبيق_خطط_السلامة" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_تطبيق_خطط_السلامة" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_تطبيق_خطط_السلامة"></textarea></td>
-                        <td><textarea name="مقترحات_تطبيق_خطط_السلامة"></textarea></td>
+                        <td><textarea name="تحديات_خطط_السلامة"></textarea></td>
+                        <td><textarea name="مقترحات_خطط_السلامة"></textarea></td>
                     </tr>
                     <tr>
                         <td>فاعلية آليات الإبلاغ عن الانقطاعات حسب الدليل المعتمد</td>
@@ -917,7 +927,7 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_jودة_بيانات_مصادر_التغذية" value="محايد/لا ينطبق"></td>
                         <td><textarea name="تحديات_بيانات_مصادر_التغذية"></textarea></td>
-                        <td><textarea name="مقترحات_بيانات_مصادر_التغذية"></textarea></td>
+                        <td><textarea name="مقترحات_jودة_بيانات_مصادر_التغذية"></textarea></td>
                     </tr>
                 </tbody>
             </table>
@@ -991,7 +1001,7 @@
             </table>
         </div>
     </div>
-    
+
     <!-- القسم 10: مؤشرات موثوقية الشبكات -->
     <div id="section-مؤشرات-موثوقية-الشبكات" class="section">
         <h2>مؤشرات موثوقية الشبكات</h2>
@@ -1012,12 +1022,12 @@
                 <tbody>
                     <tr>
                         <td>كفاءة أنظمة توثيق الانقطاعات</td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_توثيق_الانقطاعات" value="مميز"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_توثيق_الانقطاعات" value="متوسط"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_توثيق_الانقطاعات" value="متدني"></td>
-                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_anظمة_توثيق_الانقطاعات" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_anظمة_توثيق_الانقطاعات"></textarea></td>
-                        <td><textarea name="مقترحات_anظمة_توثيق_الانقطاعات"></textarea></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="مميز"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="متوسط"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="متدني"></td>
+                        <td class="table-checkbox"><input type="radio" name="تقييم_كفاءة_انظمة_توثيق_الانقطاعات" value="محايد/لا ينطبق"></td>
+                        <td><textarea name="تحديات_انظمة_توثيق_الانقطاعات"></textarea></td>
+                        <td><textarea name="مقترحات_انظمة_توثيق_الانقطاعات"></textarea></td>
                     </tr>
                     <tr>
                         <td>كفاءة تقارير مؤشرات الموثوقية</td>
@@ -1043,8 +1053,8 @@
                         <td class="table-checkbox"><input type="radio" name="تقييم_anظمة_احتساب_الموثوقية" value="متوسط"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_anظمة_احتساب_الموثوقية" value="متدني"></td>
                         <td class="table-checkbox"><input type="radio" name="تقييم_انظمة_احتساب_الموثوقية" value="محايد/لا ينطبق"></td>
-                        <td><textarea name="تحديات_انظمة_احتساب_الموثوقية"></textarea></td>
-                        <td><textarea name="مقترحات_انظمة_احتساب_الموثوقية"></textarea></td>
+                        <td><textarea name="تحديات_anظمة_احتساب_الموثوقية"></textarea></td>
+                        <td><textarea name="مقترحات_anظمة_احتساب_الموثوقية"></textarea></td>
                     </tr>
                     <tr>
                         <td>تقارير ووثائق التحقق من الأعطال -إدارة الأزمات</td>
@@ -1195,7 +1205,7 @@
             </table>
         </div>
     </div>
-
+    
     <!-- القسم الأخير: تعليقات -->
     <div id="section-تعليقات-عامة" class="section">
         <h2>نسعد بإضافة مرئياتكم لتحسين خدمات قطاع ادارة الأصول</h2>
@@ -1236,13 +1246,6 @@
         } else if (jobRole === 'متابعة الأداء ومراقبة مؤشرات') {
             showSections(['section-جودة-أعمال-تشغيل-الشبكة-والمعدات', 'section-إدارة-أعطال-الشبكة', 'section-تحليل-أداء-الأصول', 'section-معلومات-وأنظمة-الأصول', 'section-جودة-أداء-الأصول', 'section-مؤشرات-موثوقية-الشبكات', 'section-دعم-الاشتراكات-الحساسة', 'section-بناء-القدرات-الفنية-والمعرفية', 'section-تعليقات-عامة']);
         }
-        
-        // إخفاء قسم التعليقات إذا لم يتم اختيار أي وظيفة
-        if (jobRole === '') {
-            document.getElementById('section-تعليقات-عامة').style.display = 'none';
-        } else {
-            document.getElementById('section-تعليقات-عامة').style.display = 'block';
-        }
     }
 
     // A helper function to show sections based on their IDs
@@ -1254,13 +1257,84 @@
             }
         });
     }
-    
+
     function startSurvey() {
         document.getElementById('welcome-screen').style.display = 'none';
         document.getElementById('surveyForm').style.display = 'block';
         document.getElementById('section-معلومات-أساسية').style.display = 'block';
-        // إخفاء قسم التعليقات في البداية
-        document.getElementById('section-تعليقات-عامة').style.display = 'none';
+    }
+
+    function validateForm() {
+        // Remove existing error classes
+        document.querySelectorAll('.error-field').forEach(el => el.classList.remove('error-field'));
+        const errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+
+        const jobRole = document.getElementById('jobRole').value;
+        if (jobRole === '') {
+            const formGroup = document.getElementById('jobRole').closest('.form-group');
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.id = 'error-message';
+            error.textContent = 'يرجى اختيار علاقتك الوظيفية لإظهار باقي الاستبيان';
+            formGroup.appendChild(error);
+            document.getElementById('jobRole').classList.add('error-field');
+            return false;
+        }
+
+        const visibleSections = document.querySelectorAll('.section:not(#section-معلومات-أساسية)');
+        let isValid = true;
+        let firstInvalidField = null;
+
+        visibleSections.forEach(section => {
+            if (section.style.display !== 'none') {
+                const tables = section.querySelectorAll('table');
+                tables.forEach(table => {
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach(row => {
+                        const radioInputs = row.querySelectorAll('input[type="radio"]');
+                        const textareaInputs = row.querySelectorAll('textarea');
+                        
+                        // Validate radio buttons
+                        if (radioInputs.length > 0) {
+                            const radioName = radioInputs[0].name;
+                            const isRadioChecked = document.querySelector(`input[name="${radioName}"]:checked`);
+                            if (!isRadioChecked) {
+                                isValid = false;
+                                const firstRadioCell = row.querySelector('.table-checkbox');
+                                firstRadioCell.classList.add('error-field');
+                                if (!firstInvalidField) firstInvalidField = firstRadioCell;
+                            }
+                        }
+
+                        // Validate textareas
+                        textareaInputs.forEach(textarea => {
+                            if (textarea.value.trim() === '') {
+                                isValid = false;
+                                textarea.classList.add('error-field');
+                                if (!firstInvalidField) firstInvalidField = textarea;
+                            }
+                        });
+                    });
+                });
+            }
+        });
+
+        if (!isValid) {
+            const form = document.getElementById('surveyForm');
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.id = 'error-message';
+            error.textContent = 'يرجى الإجابة على جميع الأسئلة المطلوبة.';
+            form.insertBefore(error, form.querySelector('.submit-button'));
+            if (firstInvalidField) {
+                firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        return isValid;
     }
 
     // Initially show the welcome screen
